@@ -22,7 +22,7 @@
             ],
             "styles": [
               "node_modules/bootstrap/scss/bootstrap.scss",
-              "src/assets/scss/paper-dashboard.scss",
+              "src/scss/paper-dashboard.scss",
               "node_modules/ngx-toastr/toastr.css",
               "src/styles.scss"
             ],
@@ -83,7 +83,7 @@
             ],
             "styles": [
               "src/styles.css",
-              "src/assets/sass/paper-dashboard.scss"
+              "src/sass/paper-dashboard.scss"
             ],
             "assets": [
               "src/assets",
