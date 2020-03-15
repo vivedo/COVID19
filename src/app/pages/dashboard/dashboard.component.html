@@ -1,0 +1,78 @@
+<div class="row">
+  <div class="col-12">
+    <h1 class="m-0">COVID 2019</h1>
+    <p class="text-secondary">Dati ufficiali dal Dipartimento della Protezione Civile della Presidenza del Consiglio dei Ministri</p>
+  </div>
+</div>
+
+<!-- TOP CARDS -->
+<div class="row" *ngIf="lastNazionale">
+
+  <div class="col-lg-2 col-md-4 col-sm-4">
+    <app-tiny-card [title]="'Tamponi'" [content]="lastNazionale.tamponi"
+                   [icon]="'fa fa-medkit text-danger'"></app-tiny-card>
+  </div>
+
+  <div class="col-lg-2 col-md-4 col-sm-4">
+    <app-tiny-card [title]="'Casi totali'" [content]="lastNazionale.totale_casi"
+                   [icon]="'fa fa-users text-primary'"></app-tiny-card>
+  </div>
+
+  <div class="col-lg-2 col-md-4 col-sm-4">
+    <app-tiny-card [title]="'Positivi attuali'" [content]="lastNazionale.totale_attualmente_positivi"
+                   [icon]="'fa fa-user-plus text-danger'"></app-tiny-card>
+  </div>
+
+  <div class="col-lg-2 col-md-4 col-sm-4">
+    <app-tiny-card [title]="'Nuovi positivi'" [content]="lastNazionale.nuovi_attualmente_positivi"
+                   [icon]="'fa fa-user-plus text-warning'"></app-tiny-card>
+  </div>
+
+  <div class="col-lg-2 col-md-4 col-sm-4">
+    <app-tiny-card [title]="'Guariti'" [content]="lastNazionale.dimessi_guariti"
+                   [icon]="'fa fa-smile text-success'"></app-tiny-card>
+  </div>
+
+  <div class="col-lg-2 col-md-4 col-sm-4">
+    <app-tiny-card [title]="'In isolamento'" [content]="lastNazionale.isolamento_domiciliare"
+                   [icon]="'fa fa-home text-secondary'"></app-tiny-card>
+  </div>
+
+  <!-- -->
+
+  <div class="col-lg-2 col-md-4 col-sm-4">
+    <app-tiny-card [title]="'Ospedalizzati'" [content]="lastNazionale.totale_ospedalizzati"
+                   [icon]="'fa fa-hospital text-primary'"></app-tiny-card>
+  </div>
+
+
+  <div class="col-lg-2 col-md-4 col-sm-4">
+    <app-tiny-card [title]="'Sintomatici'" [content]="lastNazionale.ricoverati_con_sintomi"
+                   [icon]="'fa fa-diagnoses text-secondary'"></app-tiny-card>
+  </div>
+
+  <div class="col-lg-2 col-md-4 col-sm-4">
+    <app-tiny-card [title]="'Ter. Intensiva'" [content]="lastNazionale.terapia_intensiva"
+                   [icon]="'fa fa-procedures text-warning'"></app-tiny-card>
+  </div>
+
+  <div class="col-lg-2 col-md-4 col-sm-4">
+    <app-tiny-card [title]="'Deceduti'" [content]="lastNazionale.deceduti"
+                   [icon]="'fa fa-cross text-secondary'"></app-tiny-card>
+  </div>
+
+  <div class="col-lg-4 col-md-8 col-sm-8">
+    <app-tiny-card [title]="'Ultimo aggiornamento'" [content]="formatDate(lastNazionale.data)"
+                   [icon]="'fa fa-clock text-secondary'"></app-tiny-card>
+  </div>
+
+</div>
+<!-- /TOP CARDS -->
+
+<!-- MAIN CHART -->
+<div class="row" *ngIf="nazionale">
+  <div class="col-md-12">
+    <app-time-chart [collection]="nazionale"></app-time-chart>
+  </div>
+</div>
+<!-- /MAIN CHART -->
