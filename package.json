@@ -5,7 +5,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve -o",
-    "build": "ng build",
+    "build": "ng build --prod --base-href=\"//vivedo.github.com/COVID19\"",
+    "deploy": "ng build --prod --base-href=\"//vivedo.github.com/COVID19\" && git commit -a -m \"build\" && git push",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
