@@ -1,6 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
 
 
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1780px
+);
+
+$container-max-widths: (
+  sm: 574px,
+  md: 768px,
+  lg: 992px,
+  xl: 1780px
+);
+
+@import "../node_modules/bootstrap/scss/bootstrap";
+@import "scss/paper-dashboard";
+@import "../node_modules/ngx-toastr/toastr.css";
+
 body {
   background-color: #f4f3ef;
   padding-top: 40px;

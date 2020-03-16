@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import Chart from 'chart.js';
 import {INazionale} from '../../models';
 import {SourcesService} from '../../services/sources.service';
 

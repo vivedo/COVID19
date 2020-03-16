@@ -21,9 +21,6 @@
               "src/favicon.ico"
             ],
             "styles": [
-              "node_modules/bootstrap/scss/bootstrap.scss",
-              "src/scss/paper-dashboard.scss",
-              "node_modules/ngx-toastr/toastr.css",
               "src/styles.scss"
             ],
             "scripts": [
