@@ -10,9 +10,9 @@ import {collectExternalReferences} from '@angular/compiler';
 })
 export class SourcesService {
 
-  private URL_REGIONI = 'https://cdn.jsdelivr.net/gh/pcm-dpc/COVID-19/dati-json/dpc-covid19-ita-regioni.json';
-  private URL_PROVINCE = 'https://cdn.jsdelivr.net/gh/pcm-dpc/COVID-19/dati-json/dpc-covid19-ita-province.json';
-  private URL_NAZIONALE = 'https://cdn.jsdelivr.net/gh/pcm-dpc/COVID-19/dati-json/dpc-covid19-ita-andamento-nazionale.json';
+  private URL_REGIONI = 'https://cdn.jsdelivr.net/gh/pcm-dpc/COVID-19@latest/dati-json/dpc-covid19-ita-regioni.json';
+  private URL_PROVINCE = 'https://cdn.jsdelivr.net/gh/pcm-dpc/COVID-19@latest/dati-json/dpc-covid19-ita-province.json';
+  private URL_NAZIONALE = 'https://cdn.jsdelivr.net/gh/pcm-dpc/COVID-19@latest/dati-json/dpc-covid19-ita-andamento-nazionale.json';
 
   private dataRegione: ReplaySubject<Array<IRegione>>;
   private dataProvincia: ReplaySubject<Array<IProvincia>>;

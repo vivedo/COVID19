@@ -84,7 +84,8 @@
             ],
             "assets": [
               "src/assets",
-              "src/favicon.ico"
+              "src/favicon.ico",
+              "CNAME"
             ]
           }
         },
