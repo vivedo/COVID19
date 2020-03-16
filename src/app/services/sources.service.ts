@@ -88,7 +88,8 @@ export class SourcesService {
       map(collection =>
         collection.map(item => ({
           ...item,
-          data: new Date(item.data)
+          // @ts-ignore
+          data: new Date(item.data.replace(/-/g, '/')) // IOS bugfix. Not perfect as it relies on host timezone
         }))
       )
     ).subscribe(collection => {
@@ -109,7 +110,7 @@ export class SourcesService {
   public getLastNazionale(): Observable<INazionale> {
     return this.getNazionale().pipe(
       map(collection => {
-        const lastDate = Math.max.apply(null, collection.map(i => i.data));
+        const lastDate = Math.max(...collection.map(i => i.data.getTime()));
         return collection.find(item => item.data.getTime() === lastDate);
       })
     )
