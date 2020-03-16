@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable, ReplaySubject} from 'rxjs';
 import {INazionale, IProvincia, IRegione} from '../models';
-import {map} from 'rxjs/operators';
+import {map, tap} from 'rxjs/operators';
+import {collectExternalReferences} from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root'
@@ -27,12 +28,58 @@ export class SourcesService {
     }
 
     this.http.get<Array<IRegione>>(this.URL_REGIONI).pipe(
+
+      // Merge PA Bolzano & PA Trento in Trentino
+      map(collection => {
+        const paTrentino = collection.filter(reg => reg.codice_regione === 4);
+        collection = collection.filter(reg => reg.codice_regione !== 4);
+        const daySplit = {};
+
+        for (const pa of paTrentino) {
+          // @ts-ignore
+          if (!daySplit[pa.data]) {
+            // @ts-ignore
+            daySplit[pa.data] = [];
+          }
+
+          // @ts-ignore
+          daySplit[pa.data].push(pa);
+        }
+
+        const tColl = [];
+
+        // tslint:disable-next-line:forin
+        for (const day in daySplit) {
+          const pas = daySplit[day];
+          const trentino: IRegione = pas[0];
+
+          for (const prop in pas[1]) {
+            if (!isNaN(trentino[prop]) && !['lat', 'long', 'data', 'codice_regione'].includes(prop)) {
+              trentino[prop] += pas[1][prop];
+            }
+          }
+
+          trentino.denominazione_regione = 'Trentino Alto Adige';
+          tColl.push(trentino);
+        }
+
+        collection.push(...tColl);
+
+        return collection;
+      }),
+
+      // Formats date object
       map(collection =>
         collection.map(item => ({
           ...item,
-          data: new Date(item.data)
+          // @ts-ignore
+          data: new Date(item.data.replace(/-/g, '/')) // IOS bugfix. Not perfect as it relies on host timezone
         }))
-      )
+      ),
+
+      // Order dataset
+      map(collection => collection.sort((a, b) => a.codice_regione - b.codice_regione)),
+      map(collection => collection.sort((a, b) => a.data.getTime() - b.data.getTime()))
     ).subscribe(collection => {
       this.dataRegione.next(collection);
     });
@@ -40,12 +87,21 @@ export class SourcesService {
     return this.dataRegione.asObservable();
   }
 
-  public getRegione(): Observable<Array<IRegione>> {
+  public getRegioni(): Observable<Array<IRegione>> {
     if (!this.dataRegione) {
       return this.loadRegione();
     }
 
     return this.dataRegione.asObservable();
+  }
+
+  public getLastRegioni(): Observable<Array<IRegione>> {
+    return this.getRegioni().pipe(
+      map(collection => {
+        const lastDate = Math.max(...collection.map(i => i.data.getTime()));
+        return collection.filter(item => item.data.getTime() === lastDate);
+      })
+    )
   }
 
   /* Province */

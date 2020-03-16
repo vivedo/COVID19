@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {INazionale} from '../../models';
+import {INazionale, IRegione} from '../../models';
 import {SourcesService} from '../../services/sources.service';
 
 
@@ -13,13 +13,16 @@ export class DashboardComponent implements OnInit {
 
   public lastNazionale: INazionale;
   public nazionale: Array<INazionale>;
+  public lastRegioni: Array<IRegione>;
+  public regioni: Array<IRegione>
 
   constructor(private sourcesService: SourcesService) {}
 
   ngOnInit(): void {
     this.sourcesService.getLastNazionale().subscribe(lastNazionale => this.lastNazionale = lastNazionale);
     this.sourcesService.getNazionale().subscribe(nazionale => this.nazionale = nazionale);
-
+    this.sourcesService.getLastRegioni().subscribe(lastRegioni => this.lastRegioni = lastRegioni);
+    this.sourcesService.getRegioni().subscribe(regioni => this.regioni = regioni);
   }
 
   formatDate(date: Date) {

@@ -48,16 +48,15 @@ export class TimeChartComponent {
   public canvas: any;
   public ctx;
   public chartColor;
-  public chartEmail;
-  public chartHours;
+  public chart;
 
   initChart(labels: Array<string>, datasets: Array<any>) {
     this.chartColor = '#FFFFFF';
 
-    this.canvas = document.getElementById('chartHours');
+    this.canvas = document.getElementById('chartTime');
     this.ctx = this.canvas.getContext('2d');
 
-    this.chartHours = new Chart(this.ctx, {
+    this.chart = new Chart(this.ctx, {
       type: 'line',
 
       data: {
@@ -69,35 +68,25 @@ export class TimeChartComponent {
           display: false
         },
         tooltips: {
-          enabled: false
+          enabled: true
         },
         maintainAspectRatio: false,
         scales: {
           yAxes: [{
             stacked: true,
-            ticks: {
-              fontColor: '#9f9f9f',
-              beginAtZero: false,
-              maxTicksLimit: 5,
-            },
             gridLines: {
               drawBorder: false,
-              zeroLineColor: '#ccc',
-              color: 'rgba(255,255,255,0.05)'
+              zeroLineColor: 'transparent',
+              color: 'rgba(0,0,0,0.05)'
             }
           }],
           xAxes: [{
             barPercentage: 1.6,
             gridLines: {
               drawBorder: false,
-              color: 'rgba(255,255,255,0.1)',
-              zeroLineColor: 'transparent',
-              display: false,
+              color: 'rgba(0,0,0,0.05)',
+              zeroLineColor: 'transparent'
             },
-            ticks: {
-              padding: 20,
-              fontColor: '#9f9f9f'
-            }
           }]
         },
       }

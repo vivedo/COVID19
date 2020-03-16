@@ -1,0 +1,16 @@
+<div class="card">
+  <div class="card-header">
+    <h6 class="card-title">Casi totali nelle regioni</h6>
+  </div>
+  <div class="card-body">
+    <canvas id=chartRegion width="100" height="300"></canvas>
+  </div>
+  <div class="card-footer text-center">
+    <hr>
+    <div class="chart-legend">
+      <span *ngFor="let region of regions">
+        <i class="fa fa-circle" [ngStyle]="{ 'color': colors[region.codice_regione] }"></i> {{region.denominazione_regione}}
+      </span>
+    </div>
+  </div>
+</div>

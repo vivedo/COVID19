@@ -8,6 +8,8 @@ import {HttpClientModule} from '@angular/common/http';
 import {DashboardComponent} from './pages/dashboard/dashboard.component';
 import {TinyCardComponent} from './components/tiny-card/tiny-card.component';
 import {TimeChartComponent} from './components/time-chart/time-chart.component';
+import { DailyPieChartComponent } from './components/daily-pie-chart/daily-pie-chart.component';
+import { RegionLineChartComponent } from './components/region-line-chart/region-line-chart.component';
 
 
 @NgModule({
@@ -15,7 +17,9 @@ import {TimeChartComponent} from './components/time-chart/time-chart.component';
     AppComponent,
     DashboardComponent,
     TinyCardComponent,
-    TimeChartComponent
+    TimeChartComponent,
+    DailyPieChartComponent,
+    RegionLineChartComponent
   ],
   imports: [
     HttpClientModule,
