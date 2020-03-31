@@ -73,7 +73,7 @@ export class SourcesService {
         collection.map(item => ({
           ...item,
           // @ts-ignore
-          data: new Date(item.data.replace(/-/g, '/')) // IOS bugfix. Not perfect as it relies on host timezone
+          data: new Date(item.data)
         }))
       ),
 
@@ -145,7 +145,7 @@ export class SourcesService {
         collection.map(item => ({
           ...item,
           // @ts-ignore
-          data: new Date(item.data.replace(/-/g, '/')) // IOS bugfix. Not perfect as it relies on host timezone
+          data: new Date(item.data)
         }))
       )
     ).subscribe(collection => {
