@@ -13,7 +13,7 @@ export class DailyPieChartComponent {
   private set collection(c: INazionale | IRegione) {
     const data = {
       datasets: [{
-        data: [c.nuovi_attualmente_positivi, c.totale_attualmente_positivi - c.nuovi_attualmente_positivi, c.dimessi_guariti, c.deceduti],
+        data: [c.nuovi_positivi, c.totale_positivi - c.nuovi_positivi, c.dimessi_guariti, c.deceduti],
         backgroundColor: ['#FAC558', '#EF8157', '#6BD098', '#6C757D']
       }],
       labels: ['Nuovi positivi', 'Positivi già rilevati', 'Guariti', 'Deceduti']

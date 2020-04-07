@@ -22,7 +22,7 @@ export class TimeChartComponent {
         pointRadius: 0,
         pointHoverRadius: 0,
         borderWidth: 3,
-        data: c.map(i => i.totale_attualmente_positivi)
+        data: c.map(i => i.totale_positivi)
       },
       {
         borderColor: '#6BD098',

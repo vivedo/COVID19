@@ -9,8 +9,8 @@ export interface IRegione {
   terapia_intensiva: number;
   totale_ospedalizzati: number;
   isolamento_domiciliare: number;
-  totale_attualmente_positivi: number;
-  nuovi_attualmente_positivi: number;
+  totale_positivi: number;
+  nuovi_positivi: number;
   dimessi_guariti: number;
   deceduti: number;
   totale_casi: number;
@@ -37,8 +37,8 @@ export interface INazionale {
   terapia_intensiva: number;
   totale_ospedalizzati: number;
   isolamento_domiciliare: number;
-  totale_attualmente_positivi: number;
-  nuovi_attualmente_positivi: number;
+  totale_positivi: number;
+  nuovi_positivi: number;
   dimessi_guariti: number;
   deceduti: number;
   totale_casi: number;
